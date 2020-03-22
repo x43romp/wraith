@@ -1,0 +1,23 @@
+{
+  "name": "wraith",
+  "version": "1.0.0",
+  "description": "discord bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romplabs/wraith.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Romp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romplabs/wraith/issues"
+  },
+  "homepage": "https://github.com/romplabs/wraith#readme"
+}

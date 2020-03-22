@@ -1,0 +1,19 @@
+# remove for security
+.env
+
+# nodejs ignores
+node_modules/
+dist/
+
+
+# operating system ignores
+# MacOS
+._*
+.DS_Store
+.AppleDouble
+.LSOverride
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+[Dd]esktop.ini
+*.lnk
