@@ -6,11 +6,14 @@
         "sourceMap": true,
         // output
         "outDir": "dist",
-        "removeComments": true
+        "removeComments": true,
+        "resolveJsonModule": true,
     },
     "include": [
-        "src"
+        "src",
+        "src/**/*.json"
     ],
+    "compileOnSave": true,
     "exclude": [
         "node_modules",
         "**/node_modules/*"

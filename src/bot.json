@@ -1,0 +1,7 @@
+{
+    "commands": [
+        "clear",
+        "hello"
+    ],
+    "prefix": "!"
+}
