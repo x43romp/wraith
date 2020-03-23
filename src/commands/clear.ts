@@ -25,9 +25,7 @@ export default class ClearCommand extends WraithCommandTemplate {
         const reply: Message = await replyBuilder.send();
 
         (await messages).array().forEach((msg) => {
-            console.log('delete prep');
             msg.delete();
-            console.log('delete done');
         })
 
         reply.delete();
