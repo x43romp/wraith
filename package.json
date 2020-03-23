@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/romplabs/wraith/issues"
   },
-  "homepage": "https://github.com/romplabs/wraith#readme"
+  "homepage": "https://github.com/romplabs/wraith#readme",
+  "dependencies": {
+    "discord.js": "^12.0.2",
+    "dotenv": "^8.2.0",
+    "typescript": "^3.8.3"
+  }
 }
