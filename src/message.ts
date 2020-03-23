@@ -20,7 +20,7 @@ export default class BotMessage {
         return this._embed;
     }
 
-    public send(message?: Discord.Message): Promise<Discord.Message> {
+    public send(message?: Discord.Message | Discord.PartialMessage): Promise<Discord.Message> {
         const response = (this._text) ? this._text : this._embed;
 
         if (message) {
