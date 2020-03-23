@@ -10,7 +10,8 @@
         "resolveJsonModule": true,
     },
     "include": [
-        "src"
+        "src",
+        "src/**/*.json"
     ],
     "compileOnSave": true,
     "exclude": [
