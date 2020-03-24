@@ -5,13 +5,13 @@
         "jsx": "preserve",
         "sourceMap": true,
         // output
-        "outDir": "dist",
+        "outDir": "dist/bot",
         "removeComments": true,
         "resolveJsonModule": true,
     },
     "include": [
-        "src",
-        "src/**/*.json"
+        "src/bot",
+        "src/bot/**/*.json"
     ],
     "compileOnSave": true,
     "exclude": [
