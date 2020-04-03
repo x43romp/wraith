@@ -1,0 +1,43 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "no-unused-vars": [
+            "warn",
+            {
+                "args": "none",
+                "ignoreRestSiblings": true,
+                "vars": "all",
+                "varsIgnorePattern": "[cC]config"
+            }
+        ],
+        "space-before-function-paren": [
+            "off"
+        ]
+    }
+}

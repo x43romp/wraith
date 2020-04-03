@@ -1,19 +1,18 @@
-import { Client } from 'discord.js';
-import * as env from 'dotenv';
-import { BotConfig } from './api';
-import Bot from './bot';
+import * as env from 'dotenv'
+import Bot from './bot'
+import { BotConfig } from './api'
 
 // configure environment
-env.config();
-const TOKEN = process.env.DISCORD_TOKEN;
+env.config()
+const TOKEN = process.env.DISCORD_TOKEN
 
 // configure bot
-const configData = require("./bot.json");
-let config: BotConfig = {
+const configData = require('./bot.json')
+const config: BotConfig = {
     token: TOKEN,
-    ... configData
+    ...configData
 }
 
-console.log(config);
+console.log(config)
 
-new Bot(config).start();
+new Bot(config).start()

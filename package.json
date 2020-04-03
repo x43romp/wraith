@@ -1,31 +1,42 @@
 {
-  "name": "wraith",
-  "version": "1.0.0",
-  "description": "discord bot",
-  "main": "dist/bot/index.js",
-  "scripts": {
-    "test": "test",
-    "build": "node_modules/typescript/bin/tsc",
-    "start": "node dist/bot/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/romplabs/wraith.git"
-  },
-  "keywords": [
-    "discord",
-    "bot"
-  ],
-  "author": "Romp",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/romplabs/wraith/issues"
-  },
-  "homepage": "https://github.com/romplabs/wraith#readme",
-  "dependencies": {
-    "@types/node": "^13.9.3",
-    "discord.js": "^12.0.2",
-    "dotenv": "^8.2.0",
-    "typescript": "^3.8.3"
-  }
+    "name": "wraith",
+    "version": "1.0.0",
+    "description": "discord bot",
+    "main": "dist/bot/index.js",
+    "scripts": {
+        "test": "echo 'TODO: Create Mocha Tests'",
+        "posttest": "eslint . --ext .ts --config .eslintrc.json --quiet",
+        "build": "node_modules/typescript/bin/tsc",
+        "start": "node dist/bot/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/romplabs/wraith.git"
+    },
+    "keywords": [
+        "discord",
+        "bot"
+    ],
+    "author": "Romp",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/romplabs/wraith/issues"
+    },
+    "homepage": "https://github.com/romplabs/wraith#readme",
+    "dependencies": {
+        "@types/node": "^13.9.3",
+        "discord.js": "^12.1.1",
+        "dotenv": "^8.2.0"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^2.26.0",
+        "@typescript-eslint/parser": "^2.26.0",
+        "eslint": "^6.8.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
+        "typescript": "^3.8.3"
+    }
 }
