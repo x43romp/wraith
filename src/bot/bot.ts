@@ -1,81 +1,72 @@
-import { BotConfig } from "./api";
-import { Client } from 'discord.js';
-import BotCommand from "./command";
-export * from "./api";
+import { BotConfig } from './api'
+import { Client } from 'discord.js'
+import BotCommand from './command'
 
 export default class Bot {
     private _client: Client;
     private _commands: BotCommand[]
-    private _commandList: string[];
+    private _commandList: string[]
     private _config: BotConfig;
 
     constructor(config: BotConfig) {
-        this._config = config;
-        if (!config.token)
-            throw new Error(`No token available`)
+        this._config = config
+        if (!config.token) { throw new Error('No token available') }
 
-        this._client = new Client;
+        this._client = new Client()
     }
 
     private loadConfig(commandDir: string): void {
-        console.log(`bot`, `loadConfig(${commandDir})`);
+        console.log('bot', `loadConfig(${commandDir})`)
 
-        // check if 
+        // check if
         if (!this._config.commands ||
-            this._config.commands.length == 0 ||
-            Array.isArray(this._config.commands) == false) {
-
-            throw new Error(`No available commands in config`);
-            return;
+            this._config.commands.length === 0 ||
+            Array.isArray(this._config.commands) === false) {
+            throw new Error('No available commands in config')
         }
 
         // initialize commands
-        this._commands = [];
-        this._commandList = [];
+        this._commands = []
+        this._commandList = []
 
         // get prefix
 
         // load commands
         this._config.commands.forEach(command => {
+            const commandPrefix = (this._config.prefix) ? this._config.prefix : ''
+            const commandLine = `${commandPrefix}${command}`
 
-            const commandPrefix = (this._config.prefix) ? this._config.prefix : "";
-            const commandLine = `${commandPrefix}${command}`;
+            const commandPath: string = `${commandDir}/${command}`
+            const CommandClass = require(commandPath).default
 
-            const commandPath: string = `${commandDir}/${command}`;
-            const commandClass = require(commandPath).default;
-
-            let cmd = new commandClass(commandLine) as BotCommand;
-            this._commands.push(cmd);
-            this._commandList.push(commandLine);
-
-        });
+            const cmd = new CommandClass(commandLine) as BotCommand
+            this._commands.push(cmd)
+            this._commandList.push(commandLine)
+        })
     }
 
     start(commandDir: string = `${__dirname}/commands`): void {
-        console.log(`bot`, `start(${commandDir})`);
+        console.log('bot', `start(${commandDir})`)
 
-        this.loadConfig(commandDir);
-        this._client.login(this._config.token);
+        this.loadConfig(commandDir)
+        this._client.login(this._config.token)
 
         this._client.on('ready', () => {
-            console.log(`client`, `started`);
-        });
+            console.log('client', 'started')
+        })
 
         this._client.on('message', message => {
-            console.log(`message ${message.author.username} ${message.cleanContent}`);
-            if (message.author.bot)
-                return;
+            console.log(`message ${message.author.username} ${message.cleanContent}`)
+            if (message.author.bot) { return }
 
-            const args: string[] = message.cleanContent.split(' ');
+            const args: string[] = message.cleanContent.split(' ')
             if (this._commandList.indexOf(args[0]) < 0) return false
 
             for (const cmd of this._commands) {
                 if (cmd.isValid(message.cleanContent)) {
-                    cmd.process(message);
+                    cmd.process(message)
                 }
             }
-        });
-
-
+        })
     }
 }
