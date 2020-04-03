@@ -42,6 +42,8 @@ export default class Bot {
             const cmd = new CommandClass(commandLine) as BotCommand
             this._commands.push(cmd)
             this._commandList.push(commandLine)
+
+            console.log(`bot`, `command loaded: ${command}`)
         })
     }
 

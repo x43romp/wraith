@@ -20,18 +20,3 @@ services:
             - MYSQL_DATA=wraith
         networks:
             - local
-
-    database:
-        image: mysql
-        restart: unless-stopped
-        expose:
-            - 3306
-        environment: 
-            - MYSQL_ROOT_PASSWORD=wraith
-            - MYSQL_USER=wraith
-            - MYSQL_PASSWORD=wraith
-            - MYSQL_DATABASE=wraith
-        volumes: 
-            - database_storage
-        networks:
-            - local

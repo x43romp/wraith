@@ -1,6 +1,7 @@
 {
     "commands": [
         "clear",
+        "squad",
         "hello"
     ],
     "prefix": "!"

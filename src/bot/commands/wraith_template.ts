@@ -1,5 +1,5 @@
 import BotCommand from '../command'
-import { Message, PartialMessage, ColorResolvable } from 'discord.js'
+import { Message, PartialMessage, ColorResolvable, TextChannel, DMChannel } from 'discord.js'
 import BotMessage from '../message'
 
 export default class WraithCommandTemplate extends BotCommand {
@@ -9,7 +9,7 @@ export default class WraithCommandTemplate extends BotCommand {
     public async process(message: Message | PartialMessage): Promise<void> {
         super.process(message)
 
-        this._response = new BotMessage(message.channel)
+        this._response = new BotMessage(<TextChannel | DMChannel>message.channel)
             .setAuthor('Wraith Bot')
             .setColor(this._color)
     }

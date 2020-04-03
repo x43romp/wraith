@@ -2,6 +2,9 @@ import * as env from 'dotenv'
 import Bot from './bot'
 import { BotConfig } from './api'
 
+import WraithConnection from './db/connection'
+import WraithGame from './db/game'
+
 // configure environment
 env.config()
 const TOKEN = process.env.DISCORD_TOKEN

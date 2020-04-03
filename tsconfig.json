@@ -5,7 +5,7 @@
         "jsx": "preserve",
         "sourceMap": true,
         // output
-        "outDir": "dist/bot",
+        "outDir": "dist",
         "removeComments": true,
         "resolveJsonModule": true,
     },
