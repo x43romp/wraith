@@ -1,5 +1,5 @@
 import BotCommand from '../command'
-import { Message, PartialMessage, TextChannel, DMChannel } from 'discord.js'
+import { Message, PartialMessage, TextChannel, DMChannel, NewsChannel } from 'discord.js'
 import BotMessage from '../message'
 import WraithCommandTemplate from './wraith_template'
 
@@ -13,7 +13,7 @@ export default class ClearCommand extends WraithCommandTemplate {
             ? parseInt(args[1]) : 10
 
         // fetch messages
-        const channel: TextChannel | DMChannel = message.channel
+        const channel: TextChannel | DMChannel | NewsChannel = message.channel
         const messages = channel.messages.fetch({ limit: limitCount })
 
         // create reply message
