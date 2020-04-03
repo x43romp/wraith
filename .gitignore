@@ -17,3 +17,10 @@ Thumbs.db
 Thumbs.db:encryptable
 [Dd]esktop.ini
 *.lnk
+
+# package locking
+package-lock.json
+yarn.lock
+
+# logs
+*.log
