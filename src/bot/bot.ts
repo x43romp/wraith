@@ -10,7 +10,7 @@ export default class Bot {
 
     constructor(config: BotConfig) {
         this._config = config
-        if (!config.token) { throw new Error('No token available') }
+        if (!config.token) throw new Error('No token available')
 
         this._client = new Client()
     }
@@ -21,9 +21,8 @@ export default class Bot {
         // check if
         if (!this._config.commands ||
             this._config.commands.length === 0 ||
-            Array.isArray(this._config.commands) === false) {
+            Array.isArray(this._config.commands) === false)
             throw new Error('No available commands in config')
-        }
 
         // initialize commands
         this._commands = []
@@ -42,6 +41,8 @@ export default class Bot {
             const cmd = new CommandClass(commandLine) as BotCommand
             this._commands.push(cmd)
             this._commandList.push(commandLine)
+
+            console.log('bot', `command loaded: ${command}`)
         })
     }
 
@@ -57,16 +58,14 @@ export default class Bot {
 
         this._client.on('message', message => {
             console.log(`message ${message.author.username} ${message.cleanContent}`)
-            if (message.author.bot) { return }
+            if (message.author.bot) return
 
             const args: string[] = message.cleanContent.split(' ')
             if (this._commandList.indexOf(args[0]) < 0) return false
 
-            for (const cmd of this._commands) {
-                if (cmd.isValid(message.cleanContent)) {
+            for (const cmd of this._commands)
+                if (cmd.isValid(message.cleanContent))
                     cmd.process(message)
-                }
-            }
         })
     }
 }

@@ -13,7 +13,7 @@ export default class ClearCommand extends WraithCommandTemplate {
             ? parseInt(args[1]) : 10
 
         // fetch messages
-        const channel: TextChannel | DMChannel | NewsChannel = message.channel
+        const channel: TextChannel | DMChannel = <TextChannel | DMChannel>message.channel
         const messages = channel.messages.fetch({ limit: limitCount })
 
         // create reply message

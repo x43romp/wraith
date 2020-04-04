@@ -19,6 +19,11 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "curly": [
+            "error",
+            "multi",
+            "consistent"
+        ],
         "object-curly-spacing": [
             "error",
             "always"
@@ -39,5 +44,21 @@
         "space-before-function-paren": [
             "off"
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.ts",
+                "**/*.tsx"
+            ],
+            "rules": {
+                "no-unused-vars": [
+                    "off"
+                ],
+                "no-undef": [
+                    "off"
+                ]
+            }
+        }
+    ]
 }

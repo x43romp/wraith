@@ -23,11 +23,10 @@ export default class BotMessage {
     public send(message?: Discord.Message | Discord.PartialMessage): Promise<Discord.Message> {
         const response = (this._text) ? this._text : this._embed
 
-        if (message) {
+        if (message)
             return message.reply(response)
-        } else {
+        else
             return this._channel.send(response)
-        }
     }
 
     public clear(): BotMessage {
@@ -80,7 +79,7 @@ export default class BotMessage {
 
     public setText(text: string): BotMessage {
         this._text = text
-        if (this._embed) { this.embed().setDescription(text) }
+        if (this._embed) this.embed().setDescription(text)
         return this
     }
 
