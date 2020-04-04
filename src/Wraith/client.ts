@@ -19,7 +19,7 @@ export default class WraithClient {
 
     constructor(collection?: string) {
         this._url = process.env.MONGO_URL
-        this._database = process.env.MONGO_DB
+        this._database = process.env.MONGO_DATA
         this._collection = collection
 
         MongoClient.connect(WraithClient.connectionString()).catch(error => { throw error })
