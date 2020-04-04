@@ -22,13 +22,25 @@ export default class WraithClient {
         this._database = process.env.MONGO_DB
         this._collection = collection
 
-        MongoClient.connect(this._url).catch(error => { throw error })
+        MongoClient.connect(WraithClient.connectionString()).catch(error => { throw error })
+    }
+
+    public static connectionString() {
+        const config = {
+            url: process.env.MONGO_URL,
+            user: process.env.MONGO_USER,
+            pass: process.env.MONGO_PASS,
+            data: process.env.MONGO_DATA,
+        }
+
+        const connection = `mongodb+srv://${config.user}:${config.pass}@${config.url}/test?retryWrites=true&w=majority`
+        return connection
     }
 
     protected async connect(collection?: string) {
         // use _collection if no collection
         if (!collection && this._collection) collection = this._collection
-        const client = (await MongoClient.connect(this._url)).db(this._database).collection(collection)
+        const client = (await MongoClient.connect(WraithClient.connectionString())).db(this._database).collection(collection)
         this._client = client
         return client
     }
