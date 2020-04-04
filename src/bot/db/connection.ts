@@ -1,10 +1,9 @@
-import { MongoClient, Db, InsertOneWriteOpResult, InsertWriteOpResult, Collection, FilterQuery, UpdateQuery, UpdateOneOptions, UpdateWriteOpResult } from "mongodb";
+import { MongoClient, Db, InsertOneWriteOpResult, InsertWriteOpResult, Collection, FilterQuery, UpdateQuery, UpdateOneOptions, UpdateWriteOpResult } from 'mongodb'
 
 /**
- * 
+ *
  */
 export default class WraithConnection {
-
     private _url: string
     private _database: string
     private _collection: string
@@ -71,5 +70,4 @@ export default class WraithConnection {
                 return await client.updateOne(filter, update)
         })
     }
-
 }

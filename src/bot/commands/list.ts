@@ -1,10 +1,9 @@
-import WraithCommandTemplate from "./wraith_template";
-import { Message, PartialMessage, EmbedFieldData, User, GuildMemberManager } from "discord.js";
-import WraithSquad, { WraithSquadInterface } from "../db/squad";
-import BotMessage from "../message";
+import WraithCommandTemplate from './wraith_template'
+import { Message, PartialMessage, EmbedFieldData, User, GuildMemberManager } from 'discord.js'
+import WraithSquad, { WraithSquadInterface } from '../db/squad'
+import BotMessage from '../message'
 
 export default class SquadList extends WraithCommandTemplate {
-
     public static TIMEOUT: number = 30000
 
     public async process(message: Message | PartialMessage): Promise<void> {
@@ -27,11 +26,9 @@ export default class SquadList extends WraithCommandTemplate {
 
             WraithSquad.displayGames(message, this._response)
             return
-
         }
 
         const game = args[1]
-
 
         const ws = new WraithSquad(guild, game)
         const data: WraithSquadInterface = await ws.listGame()
@@ -54,7 +51,6 @@ export default class SquadList extends WraithCommandTemplate {
         reply.send().then(msg => {
             message.delete({ timeout: 50, reason: 'cleaning commands' })
             msg.delete({ timeout: SquadList.TIMEOUT })
-
         })
     }
 }

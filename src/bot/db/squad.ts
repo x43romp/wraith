@@ -1,7 +1,7 @@
-import WraithConnection from "./connection";
-import { Guild, User, Message, GuildMemberManager, PartialMessage } from "discord.js";
-import { FilterQuery } from "mongodb";
-import BotMessage from "../message";
+import WraithConnection from './connection'
+import { Guild, User, Message, GuildMemberManager, PartialMessage } from 'discord.js'
+import { FilterQuery } from 'mongodb'
+import BotMessage from '../message'
 
 export interface WraithSquadInterface {
     guildID: string;
@@ -15,7 +15,6 @@ export interface WraithUserInterface {
 }
 
 export default class WraithSquad extends WraithConnection {
-
     private _guild: string
     private _game: string
 
@@ -32,15 +31,12 @@ export default class WraithSquad extends WraithConnection {
         const games: string[] = await ws.list()
         const gmm: GuildMemberManager = message.guild.members
 
-        bot.setTitle("Squad")
+        bot.setTitle('Squad')
             .setDescription(
                 games.map(game => { return `- ${game}` }).join('\n')
             )
 
         await (await bot.send()).delete({ timeout: 10000 })
-
-
-
 
         // await games.users.forEach(async u => {
         //     await gmm.fetch(u.userid).then(user => {
@@ -48,7 +44,6 @@ export default class WraithSquad extends WraithConnection {
         //         bot.addField(display, u.ign.join(' | '), true)
         //     })
         // })
-
     }
 
     private filter(): FilterQuery<any> {
@@ -60,12 +55,12 @@ export default class WraithSquad extends WraithConnection {
     }
 
     public async list(): Promise<string[]> {
-        let response: string[] = []
+        const response: string[] = []
 
         await this.query({ guildID: this._guild }).then(data => {
             (data as any[]).forEach(data => {
-                if (response.includes(data['game']) === false)
-                    response.push(data['game'])
+                if (response.includes(data.game) === false)
+                    response.push(data.game)
             })
         })
 
@@ -73,12 +68,12 @@ export default class WraithSquad extends WraithConnection {
     }
 
     public async listGame(): Promise<WraithSquadInterface> {
-        let response: WraithSquadInterface = { guildID: this._guild, game: this._game, users: [] }
+        const response: WraithSquadInterface = { guildID: this._guild, game: this._game, users: [] }
         await this.query({ guildID: this._guild, game: this._game }).then(data => {
             (data as any[]).forEach(data => {
                 response.users.push({
-                    userid: data['userID'],
-                    ign: data['ign']
+                    userid: data.userID,
+                    ign: data.ign
                 })
             })
         })
@@ -86,7 +81,6 @@ export default class WraithSquad extends WraithConnection {
     }
 
     public async join(user: string | User, ign: string) {
-
         const userid = (typeof user === 'string') ? user : (user as User).id
 
         await this.updateOne(
@@ -98,6 +92,5 @@ export default class WraithSquad extends WraithConnection {
             },
             { upsert: true }
         )
-
     }
 }

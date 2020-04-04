@@ -1,5 +1,5 @@
-import WraithClient from "./client"
-import { Guild, User } from "discord.js"
+import WraithClient from './client'
+import { Guild, User } from 'discord.js'
 
 export interface WraithSquadMember {
     userID: string,
@@ -7,7 +7,6 @@ export interface WraithSquadMember {
 }
 
 export default class WraithSquad extends WraithClient {
-
     public static COLLECTION: string = 'squad'
     private _gid: string
 
@@ -23,8 +22,8 @@ export default class WraithSquad extends WraithClient {
             .toArray()
         const response: string[] = []
         squads.map(squad => {
-            if (response.includes(squad['squad']) === false)
-                response.push(squad['squad'])
+            if (response.includes(squad.squad) === false)
+                response.push(squad.squad)
         })
         return response
     }
@@ -38,7 +37,7 @@ export default class WraithSquad extends WraithClient {
             .toArray()
 
         players.forEach(player => {
-            response.push({ userID: player['userID'], ign: player['ign'] })
+            response.push({ userID: player.userID, ign: player.ign })
         })
 
         return response

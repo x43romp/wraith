@@ -1,4 +1,4 @@
-import { MongoClient, Collection } from "mongodb"
+import { MongoClient, Collection } from 'mongodb'
 
 export async function connect(collection: string) {
     const url = process.env.MONGO_URL
@@ -10,7 +10,6 @@ export async function connect(collection: string) {
 }
 
 export default class WraithClient {
-
     protected _url: string
     protected _database: string
     protected _collection: string
@@ -30,7 +29,7 @@ export default class WraithClient {
             url: process.env.MONGO_URL,
             user: process.env.MONGO_USER,
             pass: process.env.MONGO_PASS,
-            data: process.env.MONGO_DATA,
+            data: process.env.MONGO_DATA
         }
 
         const connection = `mongodb+srv://${config.user}:${config.pass}@${config.url}/test?retryWrites=true&w=majority`

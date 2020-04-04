@@ -1,9 +1,8 @@
-import WraithCommandTemplate from "./wraith_template";
-import { Message, PartialMessage, UserManager, Guild } from "discord.js";
-import WraithSquad from "../../Wraith/squad";
+import WraithCommandTemplate from './wraith_template'
+import { Message, PartialMessage, UserManager, Guild } from 'discord.js'
+import WraithSquad from '../../Wraith/squad'
 
 export default class SquadBot extends WraithCommandTemplate {
-
     private _client: WraithSquad
     private _timeout: number = 60000 * 5
 
@@ -23,13 +22,13 @@ export default class SquadBot extends WraithCommandTemplate {
         this._client = new WraithSquad(guild)
 
         if (!args[1]) return this.printHelp()
-        let command = args[1].toLowerCase()
+        const command = args[1].toLowerCase()
         const squad = args[2]
 
         const temp: string[] = []
-        for (let i = 3; i < args.length; i++) {
+        for (let i = 3; i < args.length; i++)
             temp.push(args[i])
-        }
+
         const ign = temp.join(' ').trim()
 
         if (command === 'join') {
@@ -38,12 +37,10 @@ export default class SquadBot extends WraithCommandTemplate {
             await setTimeout(() => { this.listSquad(guild, squad) }, 1000)
         }
 
-        if (command === 'list' && !squad) {
+        if (command === 'list' && !squad)
             this.list()
-        } else if (command === 'list' && squad) {
+        else if (command === 'list' && squad)
             this.listSquad(guild, squad)
-        }
-
     }
 
     private async list() {
